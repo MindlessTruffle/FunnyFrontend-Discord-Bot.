@@ -1,7 +1,9 @@
 # FunnyFrontend Discord Bot
 
 ## Overview
-FunnyFrontend is a Discord bot that offers various fun and utility commands powered by AI models and external APIs. It includes functionalities such as generating AI chat responses, creating AI-generated images, translating text into different styles, searching for images and GIFs, finding YouTube videos, and more.
+FunnyFrontend is Discord bot that offers various fun and utility commands powered by AI models and external APIs. It includes functionalities such as generating AI chat responses, creating AI-generated images, translating text into different styles, searching for images and GIFs, finding YouTube videos, and more. The bot is in very early development, and doesn't have very optimised code!
+
+Note: Some features use the stable diffusion pipeline, if you dont have atleast 4-6gb of dedicated GPU memory (Different from RAM*) and 3gb of storage; feel free to remove the features that utilise it!
 
 ## Features
 - AI chat responses
