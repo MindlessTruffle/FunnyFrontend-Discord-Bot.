@@ -6,7 +6,7 @@ FunnyFrontend is a Discord bot that offers various fun and utility commands powe
 ## Features
 - AI chat responses
 - AI-generated images
-- Music generation (through a replicated API)
+- Music generation (through Replicated API)
 - Translation of text into different styles (Gen Z, Gen Alpha, Kawaii)
 - Image and GIF searching
 - YouTube video searching
