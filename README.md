@@ -23,7 +23,7 @@ FunnyFrontend is a Discord bot that offers various fun and utility commands powe
 3. Set up environment variables:
     - Obtain a Gemini API key and set it as `GEMENI_API_KEY` in your environment.
     - Obtain a Discord bot token and set it as `DISCORD_TOKEN` in your environment.
-    - Obtain a Replicate API key, though it is only used by commented (not being used) code and set it as `REPLICATE_API_TOKEN` in your environment
+    - OPTIONAL: Obtain a Replicate API key, though it is only used by commented (not being used) code and set it as `REPLICATE_API_TOKEN` in your environment
 
 ## Usage
 ### Commands
