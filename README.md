@@ -14,7 +14,7 @@ FunnyFrontend is a Discord bot that offers various fun and utility commands powe
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone <(https://github.com/MindlessTruffle/FunnyFrontend-Discord-Bot-)>
+    git clone git clone https://github.com/MindlessTruffle/FunnyFrontend-Discord-Bot-.git
     ```
 2. Install dependencies:
     ```bash
