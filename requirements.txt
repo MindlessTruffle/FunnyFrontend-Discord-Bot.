@@ -1,0 +1,14 @@
+accelerate
+bing-image-downloader
+diffusers
+discord
+gradio
+google-generativeai
+moviepy
+musicpy
+python-dotenv
+replicate
+simple_image_download
+torch
+transformers
+youtube-search
