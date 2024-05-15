@@ -11,13 +11,11 @@ import torch
 import numpy as np
 from torchvision.utils import save_image, make_grid
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
 genai.configure(api_key=os.environ["GEMENI_API_KEY"])
-
-pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
-pipe = pipe.to("cuda")
 
 # Set up the model
 generation_config = {
@@ -71,6 +69,9 @@ def all_capitalizations(word):
     upper_first = [first.upper() + tail for tail in all_capitalizations(rest)]
     return lower_first + upper_first
 
+pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+pipe = pipe.to("cuda")
+
 def createImage(prompt, imagenum):
     model_id1 = "dreamlike-art/dreamlike-diffusion-1.0"
 
@@ -83,12 +84,88 @@ def createImage(prompt, imagenum):
     image_pil = Image.fromarray(image_np)
 
     # Create the folder if it doesn't exist
-    Path("downloaded_images").mkdir(parents=True, exist_ok=True)
+    Path("ai_images").mkdir(parents=True, exist_ok=True)
 
     # Save the image to the folder
-    image_pil.save(f"downloaded_images/result_image{imagenum}.png")
+    image_pil.save(f"ai_images/result_image{imagenum}.png")
 
 def youtubeSearch(terms, amt):
-  return YoutubeSearch(terms, max_results=1).to_dict()
+    return YoutubeSearch(terms, max_results=1).to_dict()
 
-print("GPU Enabled: " + str(torch.cuda.is_available()))
+def checkLink(string):
+    word_list = ["png", "jpg", "jpeg", "webp"] # NNOTE: ADD IMAGE CONVERSION FOR STUFF LIKE avif
+    link = str(string)
+    for i in word_list:
+        check = i + "?"
+        if check in link:
+            return True
+    else:
+        return False
+
+canvasColorDict = {
+    "red": (255, 0, 0),
+    "lightred": (255, 153, 153),
+    "darkred": (139, 0, 0),
+
+    "green": (0, 255, 0),
+    "lightgreen": (144, 238, 144),
+    "darkgreen": (0, 100, 0),
+
+    "blue": (0, 0, 255),
+    "lightblue": (173, 216, 230),
+    "darkblue": (0, 0, 139),
+
+    "yellow": (255, 255, 0),
+    "lightyellow": (255, 255, 153),
+    "darkyellow": (205, 205, 0),
+
+    "cyan": (0, 255, 255),
+    "lightcyan": (224, 255, 255),
+    "darkcyan": (0, 139, 139),
+
+    "magenta": (255, 0, 255),
+    "lightmagenta": (255, 119, 255),
+    "darkmagenta": (139, 0, 139),
+
+    "orange": (255, 165, 0),
+    "lightorange": (255, 204, 153),
+    "darkorange": (255, 140, 0),
+
+    "purple": (128, 0, 128),
+    "lightpurple": (204, 153, 255),
+    "darkpurple": (75, 0, 130),
+
+    "pink": (255, 192, 203),
+    "lightpink": (255, 182, 193),
+    "darkpink": (199, 21, 133),
+
+    "brown": (165, 42, 42),
+    "lightbrown": (210, 180, 140),
+    "darkbrown": (139, 69, 19),
+
+    "gray": (128, 128, 128),
+    "lightgray": (211, 211, 211),
+    "darkgray": (105, 105, 105),
+
+    "white": (255, 255, 255),
+    "black": (0, 0, 0),
+
+    "gold": (255, 215, 0),
+    "silver": (192, 192, 192),
+
+    "cream": (255, 253, 208),
+    "banana": (255, 225, 53),
+    "peach": (255, 218, 185),
+    "maroon": (128, 0, 0),
+    "zaffre": (0, 20, 168),
+    "olive": (128, 128, 0),
+    "lightgreen": (162, 232, 89),
+}
+
+def ping_to_id(input_string):
+    if len(input_string) < 3:
+        return "Input string must have at least 3 characters"
+    else:
+        return input_string[2:-1]
+    
+# print("GPU Enabled: " + str(torch.cuda.is_available()))
